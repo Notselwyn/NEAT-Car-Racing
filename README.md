@@ -5,7 +5,7 @@ This application basically trains cars to ride on a custom made track (more deta
 
 Got any suggestions (especially regarding the NEAT config)? Send me a DM at Discord: @Lau#1337
 
-<img src="https://i.imgur.com/hi2z8OB.gif"></img>
+<img src="https://i.imgur.com/hi2z8OB.gif" width="400" height="300"></img>
 
 ## Dependencies
 
