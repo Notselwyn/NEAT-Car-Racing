@@ -3,6 +3,20 @@ NeuroEvolution of Augmenting Topologies meets Car Racing.
 
 ## Dependencies
 
+To install the following dependencies, run `pip install .` in the source directory.
+
+You can also manually install these packages running `pip install packagename` anywhere in your system. 
+
+- neat
+- numpy
+- os
+- pickle
+- pygame
+- functools
+- PIL
+- scipy
+- skimage
+
 ## Config
 
 - amount_generations = 300
