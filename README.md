@@ -1,7 +1,11 @@
 # NEAT Car Racing
 NeuroEvolution of Augmenting Topologies meets Car Racing.
 
+This application basically trains cars to ride on a custom made track (more details in this readme!) using NEAT.
+
 Got any suggestions (especially regarding the NEAT config)? Send me a DM at Discord: @Lau#1337
+
+![Gif Footage](https://i.imgur.com/hi2z8OB.gif)
 
 ## Dependencies
 
