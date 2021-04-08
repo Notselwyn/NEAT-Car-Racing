@@ -1,6 +1,8 @@
 # NEAT Car Racing
 NeuroEvolution of Augmenting Topologies meets Car Racing.
 
+Got any suggestions (especially regarding the NEAT config)? Send me a DM at Discord: @Lau#1337
+
 ## Dependencies
 
 To install the following dependencies, run `pip install -r requirements.txt` in the source directory.
