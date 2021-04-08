@@ -47,6 +47,7 @@ You can also manually install these packages running `pip install packagename` a
   - This will toggle the NEAT stats: fitness, id, size, adj fit, et cetera.
 
 ## Making a custom track
+
 You must follow these color codes strictly
 
 - Road
@@ -59,9 +60,10 @@ You must follow these color codes strictly
   - #FF0000 
   - RGB(255, 0, 0)
 
-The track must also be 600x450px, or you should adjust the pygame window's size. Keep in mind: Only 650x450px tracks have been tested!!!
-
-Remember to leave at least 15 pixels between different road parts, as the AI might get confused because of the input range.
+Note the following things:
+- The track must be 600x450px, or you should adjust the pygame window's size. 
+- Only 650x450px tracks have been tested.
+- Leave at least 15 pixels between different road parts, as the AI might get confused because of the input range.
 
 ## How does it work (Steps)?
 1. Pillow (a.k.a. PIL) turns the **track** image into a Numpy array called **track_array**. 
