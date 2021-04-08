@@ -1,0 +1,5 @@
+neat-python
+numpy
+pygame
+scipy
+scikit-image
