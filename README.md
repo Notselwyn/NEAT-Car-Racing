@@ -110,7 +110,7 @@ Note the following things:
 
 4,5. Get value a value 1, 0, -1, based on the net given in step 4,1. 
 
-4,5,1. The input for the net are 100 nodes, gained in the following way:
+4,5,1. The input for the net is 100 nodes, gained in the following way:
 
 4,5,2. **rotate_array()** gets called.
 
