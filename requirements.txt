@@ -1,5 +1,5 @@
 neat-python
-numpy
 pygame
-scipy
-scikit-image
+numpy
+functools
+numba
