@@ -17,7 +17,7 @@ from numba import jit
 path_track = "Files/track-3.png"
 
 # Speed of the car in pixels
-speed = 5
+speed = 10
 
 # Angle in degrees in which the car can turn in 1 move
 # Intensity = 20 gives -20 to 20 degrees in turns.
@@ -62,9 +62,6 @@ neat_statistics = False
 # Toggle the pygame GUI
 pygame_toggle = True
 
-# Show debug statistics and overlay the screen
-debug = False
-
 """"
              ██████╗  ██████╗  ███████╗  ███████╗ 
             ██╔════╝ ██╔═══██╗ ██╔═══██╗ ██╔════╝ 
@@ -82,6 +79,9 @@ if __name__ == "__main__":
     car_coords_y = round(np.average(start_car_coords[0]))
     track_array = np.vectorize(lambda x: 0 if x != np.average(rc) and x != np.average(flc) else 1)(track_array)
     car_coords = (car_coords_y, car_coords_x)
+
+    with open("Files/config-feedforward.txt") as f:
+        threshold = [int(l.split("=")[1]) for l in f.readlines() if "fitness_threshold" in l][0]
 
     best_fit = 0
     generation = 0
@@ -165,7 +165,7 @@ def run():
 
 @cache
 @jit(nopython=True)
-def map_area(angle: int, coords: tuple) -> np.array:
+def map_area(angle: int, coords: tuple) -> list:
     """" Basically gets the coordinates in a 180 degree circle in front of the car
 
     :param angle: The angle of the car/genome.
@@ -226,14 +226,9 @@ def main(genomes: list, config):
         coords_array[genome_id] = car_coords
         genomes[genomes.index((genome_id, genome))][1].fitness = 0
 
-    while len(coords_array) > 0:
+    while len(coords_array):
         if pygame_toggle:
             screen.blit(track, (0, 0))
-            if debug:
-                surf = pygame.surfarray.make_surface(np.rot90(np.fliplr(track_array)))
-                surf.set_alpha(120)
-                screen.blit(surf, (0, 0))
-
             if neat_statistics:
                 text_genome_count = font.render(f"Genomes: {len(coords_array)}", True, (255, 255, 255))  # Make a text
                 text_genome_fitness = font.render(f"Avg Fit: {round(np.average([x[1].fitness for x in genomes]), 2)}", True, (255, 255, 255))
@@ -265,6 +260,8 @@ def main(genomes: list, config):
                         exit()
                     else:
                         replay_genome_func()
+                elif threshold < genome.fitness:
+                    return
 
                 angle = (angle + net_array[genome_id].activate(map_area(angle, coords))[0] * angle_intensity) % 360
                 coords_array[genome_id] = new_coordinates(coords, angle)
@@ -277,6 +274,13 @@ def main(genomes: list, config):
                     spoof_car_rect = spoof_car.get_rect()
                     spoof_car_rect.center = coords_array[genome_id][::-1]
                     screen.blit(spoof_car, spoof_car_rect)
+
+                    if neat_statistics:
+                        for x in range(-90, 91, 5):
+                            coords_translated = new_coordinates(coords, (angle+x) % 360)
+                            box_size = 1
+                            pygame.draw.rect(screen, (255, 255, 255), (coords_translated[1] - box_size, coords_translated[0] - box_size, box_size * 2, box_size * 2), 1)
+
 
                     for event in pygame.event.get():
                         if event.type == pygame.QUIT:
