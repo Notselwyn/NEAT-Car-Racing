@@ -53,17 +53,7 @@ You can also manually install these packages running `pip install packagename` a
 
 ## Making a custom track
 
-You must follow these color codes strictly
-
-- Road
-  - #404040 
-  - RGB(64, 64, 64)
-- Grass (Kill zone)
-  - #007F0E 
-  - RGB(0, 127, 14)
-- Finish- and start line
-  - #FF0000 
-  - RGB(255, 0, 0)
+You must define the color values of the finish line, road and not-road in main.py.
 
 Note the following things:
 - The track must be 600x450px, or you should adjust the pygame window's size. 
