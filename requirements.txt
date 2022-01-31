@@ -1,5 +1,4 @@
 neat-python
 pygame
 numpy
-functools
 numba

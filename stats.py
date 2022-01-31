@@ -40,7 +40,9 @@ class Manager:
 
     def update(self, data: list[tuple]):
         for pos, (data_arr, gen) in enumerate(data):
-            self.graphs[pos].update(data_arr, gen)
+            try:
+                self.graphs[pos].update(data_arr, gen)
+            except: ...
 
 
 class MessageHandler(BaseHTTPRequestHandler):

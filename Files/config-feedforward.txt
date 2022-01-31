@@ -74,5 +74,5 @@ max_stagnation       = 10
 species_elitism      = 5
 
 [DefaultReproduction]
-elitism            = 10
+elitism            = 2
 survival_threshold = 0.2
